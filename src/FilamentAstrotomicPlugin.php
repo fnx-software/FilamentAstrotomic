@@ -4,19 +4,17 @@ namespace Fnxsoftware\FilamentAstrotomic;
 
 use Astrotomic\Translatable\Locales;
 use Closure;
+use Exception;
 use Filament\Contracts\Plugin;
 use Filament\Panel;
-use Throwable;
-use Exception;
 use Illuminate\Support\Str;
-class FilamentAstrotomicPlugin implements Plugin
+use Throwable;
 
+class FilamentAstrotomicPlugin implements Plugin
 {
     protected ?Closure $getLocaleLabelUsing = null;
 
-    final public function __construct()
-    {
-    }
+    final public function __construct() {}
 
     public function getId(): string
     {
@@ -47,15 +45,13 @@ class FilamentAstrotomicPlugin implements Plugin
     }
 
     /**
-     * @return \Illuminate\Support\HigherOrderTapProxy
-     *
      * @throws Throwable
      */
     public function allLocales(): \Illuminate\Support\HigherOrderTapProxy
     {
         return tap(app(Locales::class)->all(), function (array $locales) {
             foreach ($locales as $locale) {
-                throw_if(!is_string($locale), new Exception('Sorry, but the locales must be strings.'));
+                throw_if(! is_string($locale), new Exception('Sorry, but the locales must be strings.'));
             }
         });
     }

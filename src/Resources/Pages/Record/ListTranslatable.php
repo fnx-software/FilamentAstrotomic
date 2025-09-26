@@ -2,8 +2,8 @@
 
 namespace Fnxsoftware\FilamentAstrotomic\Resources\Pages\Record;
 
-use Fnxsoftware\FilamentAstrotomic\Resources\Concerns\HasLocales;
 use Filament\Resources\Pages\ListRecords;
+use Fnxsoftware\FilamentAstrotomic\Resources\Concerns\HasLocales;
 
 /**
  * @mixin ListRecords

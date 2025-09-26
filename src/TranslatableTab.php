@@ -18,8 +18,7 @@ class TranslatableTab
         protected Tab $tab,
         protected string $locale,
         protected string $mailLocale,
-    ) {
-    }
+    ) {}
 
     /**
      * Get current tab component
@@ -70,7 +69,7 @@ class TranslatableTab
     /**
      * Define the custom callback to generate the name of the tab.
      *
-     * @param Closure(string $name, string $locale):string|null $callback
+     * @param  Closure(string $name, string $locale):string|null  $callback
      */
     public function makeNameUsing(?Closure $callback = null): void
     {

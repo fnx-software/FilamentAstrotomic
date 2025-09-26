@@ -2,17 +2,14 @@
 
 namespace Fnxsoftware\FilamentAstrotomic\Schemas\Components;
 
-use AllowDynamicProperties;
-use Filament\Schemas\Components\Tabs;
 use Closure;
+use Filament\Schemas\Components\Tabs;
 use Fnxsoftware\FilamentAstrotomic\FilamentAstrotomicPlugin;
 use Fnxsoftware\FilamentAstrotomic\TranslatableTab;
-
 
 /**
  * @see \Fnxsoftware\FilamentAstrotomic\FilamentAstrotomic
  */
-
 class TranslatableTabs extends Tabs
 {
     protected FilamentAstrotomicPlugin $plugin;
@@ -59,7 +56,7 @@ class TranslatableTabs extends Tabs
         /**
          * Merge all tabs in the correct order.
          */
-        $this->tabs(fn() => [
+        $this->tabs(fn () => [
             ...$this->prependTabs,
             ...$this->localeTabs,
             ...$this->appendTabs,
@@ -69,11 +66,11 @@ class TranslatableTabs extends Tabs
     /**
      * Set the callback to generate the name of the tab.
      *
-     * @param Closure(string $name, string $locale):string|null $callback
+     * @param  Closure(string $name, string $locale):string|null  $callback
      */
     public function makeNameUsing(?Closure $callback): static
     {
-        return $this->tap(fn() => $this->nameGenerator = $callback);
+        return $this->tap(fn () => $this->nameGenerator = $callback);
     }
 
     /**
@@ -81,13 +78,13 @@ class TranslatableTabs extends Tabs
      */
     public function makeNameUsingPlainSyntax(): static
     {
-        return $this->makeNameUsing(fn(string $name, string $locale) => "{$name}:{$locale}");
+        return $this->makeNameUsing(fn (string $name, string $locale) => "{$name}:{$locale}");
     }
 
     /**
      * Generates the localised tabs with given schema for all available locales
      *
-     * @param callable(TranslatableTab):(array<Component>|Closure) $tabSchema
+     * @param  callable(TranslatableTab):(array<Component>|Closure)  $tabSchema
      */
     public function localeTabSchema(callable $tabSchema): self
     {
@@ -116,10 +113,10 @@ class TranslatableTabs extends Tabs
     /**
      * Prepends tabs before localised tabs.
      *
-     * @param array|callable():(array) $tabs
+     * @param  array|callable():(array)  $tabs
      * @return $this
      */
-    public function prependTabs(array|callable $tabs = []): self
+    public function prependTabs(array | callable $tabs = []): self
     {
         $this->prependTabs = $this->evaluate($tabs);
 
@@ -129,10 +126,10 @@ class TranslatableTabs extends Tabs
     /**
      * Appends tabs after localised tabs.
      *
-     * @param array|callable():(array) $tabs
+     * @param  array|callable():(array)  $tabs
      * @return $this
      */
-    public function appendTabs(array|callable $tabs = []): self
+    public function appendTabs(array | callable $tabs = []): self
     {
         $this->appendTabs = $this->evaluate($tabs);
 

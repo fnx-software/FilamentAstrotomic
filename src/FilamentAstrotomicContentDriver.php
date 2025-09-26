@@ -2,7 +2,6 @@
 
 namespace Fnxsoftware\FilamentAstrotomic;
 
-
 use Astrotomic\Translatable\Contracts\Translatable;
 use Filament\Support\Contracts\TranslatableContentDriver;
 use Illuminate\Database\Connection;
@@ -13,16 +12,14 @@ use function Filament\Support\generate_search_column_expression;
 
 class FilamentAstrotomicContentDriver implements TranslatableContentDriver
 {
-    public function __construct(protected string $activeLocale)
-    {
-    }
+    public function __construct(protected string $activeLocale) {}
 
     public function isAttributeTranslatable(string $model, string $attribute): bool
     {
         /** @var Model|Translatable $model */
         $model = app($model);
 
-        if (!method_exists($model, 'isTranslationAttribute')) {
+        if (! method_exists($model, 'isTranslationAttribute')) {
             return false;
         }
 
@@ -30,19 +27,19 @@ class FilamentAstrotomicContentDriver implements TranslatableContentDriver
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function makeRecord(string $model, array $data): Model
     {
         /** @var Model|Translatable $model */
-        $record = new $model();
+        $record = new $model;
 
         $record->fill($data);
 
         return $record;
     }
 
-    public function setRecordLocale(Model|Translatable $record): Model
+    public function setRecordLocale(Model | Translatable $record): Model
     {
         if (method_exists($record, 'setDefaultLocale')) {
             $record->setDefaultLocale($this->activeLocale);
@@ -52,7 +49,7 @@ class FilamentAstrotomicContentDriver implements TranslatableContentDriver
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param  array<string, mixed>  $data
      */
     public function updateRecord(Model $record, array $data): Model
     {
@@ -74,15 +71,14 @@ class FilamentAstrotomicContentDriver implements TranslatableContentDriver
         return $this->mutateTranslatableData($record, $attributes);
     }
 
-    /*todo - not tested yet*/
+    /* todo - not tested yet */
     public function applySearchConstraintToQuery(
         Builder $query,
-        string  $column,
-        string  $search,
-        string  $whereClause,
-        ?bool   $isCaseInsensitivityForced = null
-    ): Builder
-    {
+        string $column,
+        string $search,
+        string $whereClause,
+        ?bool $isCaseInsensitivityForced = null
+    ): Builder {
         /** @var Connection $databaseConnection */
         $databaseConnection = $query->getConnection();
 
@@ -95,9 +91,9 @@ class FilamentAstrotomicContentDriver implements TranslatableContentDriver
         );
     }
 
-    protected static function mutateTranslatableData(Model|Translatable $record, array $data = []): array
+    protected static function mutateTranslatableData(Model | Translatable $record, array $data = []): array
     {
-        if (!method_exists($record, 'getTranslationsArray')) {
+        if (! method_exists($record, 'getTranslationsArray')) {
             return $data;
         }
 

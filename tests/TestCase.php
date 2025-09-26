@@ -12,11 +12,11 @@ use Filament\Notifications\NotificationsServiceProvider;
 use Filament\Support\SupportServiceProvider;
 use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
+use Fnxsoftware\FilamentAstrotomic\FilamentAstrotomicServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use Fnxsoftware\FilamentAstrotomic\FilamentAstrotomicServiceProvider;
 
 class TestCase extends Orchestra
 {

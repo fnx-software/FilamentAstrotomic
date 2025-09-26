@@ -8,13 +8,13 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
+use Fnxsoftware\FilamentAstrotomic\Commands\FilamentAstrotomicCommand;
+use Fnxsoftware\FilamentAstrotomic\Testing\TestsFilamentAstrotomic;
 use Illuminate\Filesystem\Filesystem;
 use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Fnxsoftware\FilamentAstrotomic\Commands\FilamentAstrotomicCommand;
-use Fnxsoftware\FilamentAstrotomic\Testing\TestsFilamentAstrotomic;
 
 class FilamentAstrotomicServiceProvider extends PackageServiceProvider
 {

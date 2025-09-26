@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Fnxsoftware\FilamentAstrotomic\Resources\Pages\Record;
 
 use Astrotomic\Translatable\Contracts\Translatable;
-use Fnxsoftware\FilamentAstrotomic\Resources\Concerns\HasLocales;
 use Filament\Resources\Pages\EditRecord;
+use Fnxsoftware\FilamentAstrotomic\Resources\Concerns\HasLocales;
 use Illuminate\Database\Eloquent\Model;
 
 /**
